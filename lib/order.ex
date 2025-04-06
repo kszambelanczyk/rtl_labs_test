@@ -8,6 +8,17 @@ defmodule LtrLabs.Order do
   * `tax` - The tax for the order.
   * `net_total` - The net total for the order.
   * `total` - The total for the order.
+
+  In the database order would be a table with the following migration:
+  ```elixir
+  create table(:orders) do
+    add :tax, :decimal
+    add :net_total, :decimal
+    add :total, :decimal
+
+    timestamps(type: :utc_datetime)
+  end
+  ```
   """
 
   alias Decimal, as: D

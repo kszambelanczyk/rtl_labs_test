@@ -10,6 +10,22 @@ defmodule LtrLabs.OrderItem do
   * `quantity` - The quantity of the item - this is given in the order.
   * `net_total` - The net total of the item - this is calculated.
   * `total` - The total of the item - this is calculated.
+
+
+  In the database order_item would be a table with the following migration:
+  ```elixir
+  create table(:order_items) do
+    add :name, :string
+    add :net_price, :decimal
+    add :tax_rate, :decimal
+    add :quantity, :integer
+    add :net_total, :decimal
+    add :total, :decimal
+    add :order_id, references(:orders)
+
+    timestamps(type: :utc_datetime)
+  end
+  ```
   """
 
   alias Decimal, as: D
